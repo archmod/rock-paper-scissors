@@ -1,0 +1,94 @@
+<script>
+    function playRound(playerSelection, computerSelection) {
+        // your code here!
+        var player = playerSelection.toLowerCase();
+        var computer = computerSelection;
+
+        if (player == "rock") {
+            if (computer == "scissors") {
+                
+                console.log("rock beats scissors, you win");
+                return "playerWin";
+            } else if (computer == "paper") {
+                console.log("paper beats rock, you lose");
+                return "computerWin";
+            } else if (computer == "rock") {
+                console.log("draw");
+            }
+        }
+        if (player == "paper") {
+            if (computer == "rock") {
+                console.log("paper beats rock, you win");
+                return "playerWin";
+            } else if (computer == "scissors") {
+                
+                console.log("scissors beats paper, you lose");
+                return "computerWin";
+            } else if (computer == "paper") {
+                console.log("draw");
+            }
+        }
+        if (player == "scissors") {
+            if (computer == "paper") {
+                console.log("scissors beats paper, you win");
+                return "playerWin";
+            } else if (computer == "rock") {
+                
+                console.log("rock beats scissors, you lose");
+                return "computerWin";
+            } else if (computer == "scissors") {
+                console.log("draw");
+            }
+        } else {
+            console.log("you lose learn how to play u noob");
+        }
+
+    }
+
+    function computerPlay() {
+        var ranNo = Math.random();
+        if (ranNo < .33) {
+            return "rock";
+
+        }
+        if (.33 < ranNo && ranNo < .66) {
+            return "paper";
+
+        }
+        if (.66 <= ranNo) {
+            return "scissors";
+
+        }
+    }
+    function determineWinner(playerScore, computerScore) {
+        if (playerScore > computerScore) {
+            console.log("Player wins the game");
+        } else if( computerScore > playerScore) {
+            console.log("Computer wins the game");
+        }
+        else if (playerScore == computerScore) {
+            console.log("Its a draw good game");
+        }
+    }
+
+    function game() {
+        let computerScore = 0;
+        let playerScore = 0;
+        for (let i = 1; i <6; i++) {
+            //counts to 5 games 
+            console.log("round " + i);
+            let userPrompt = prompt("Rock paper or scissors");
+            let playerSelection = userPrompt;
+            let computerSelection = computerPlay();
+            let roundWinner = playRound(playerSelection, computerSelection);
+
+            if (roundWinner == "computerWin") {
+                computerScore++
+            } else if (roundWinner == "playerWin") {
+                playerScore++;
+            }          
+        }
+        determineWinner(playerScore, computerScore);
+    }
+    game();
+</script>
